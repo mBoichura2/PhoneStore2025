@@ -1,0 +1,53 @@
+﻿@using static PhoneStore2025.Controllers.GalleryController
+@model Phone
+
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Я люблю </p>
+
+<button type="button" class="btn btn-outline-success">Success</button>
+
+<p class="fst-italic">Italic text.</p>
+
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+        <div class="card h-100">
+            <img src="https://applehome.te.ua/wp-content/uploads/2021/09/iphone-13-pink-select-2021.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">@Model.Manufacturer @Model.PhoneModel </h5>
+                <p class="card-text">price $@Model.Price</p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card h-100">
+            <img src="https://applehome.te.ua/wp-content/uploads/2021/09/iphone-13-pink-select-2021.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a short card.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card h-100">
+            <img src="https://applehome.te.ua/wp-content/uploads/2021/09/iphone-13-pink-select-2021.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">iPhone 15 pro max</h5>
+                <p class="card-text">The best phone in the world</p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card h-100">
+            <img src="https://applehome.te.ua/wp-content/uploads/2021/09/iphone-13-pink-select-2021.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+        </div>
+    </div>
+</div>
