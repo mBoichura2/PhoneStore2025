@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PhoneStore2025.Data;
 
@@ -11,9 +12,11 @@ using PhoneStore2025.Data;
 namespace PhoneStore2025.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250304064532_AddPhones")]
+    partial class AddPhones
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -246,29 +249,6 @@ namespace PhoneStore2025.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Phones");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Manufacturer = "Apple",
-                            PhoneModel = "iPhone 12 Pro Max",
-                            Price = 305.0
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Manufacturer = "Samsung",
-                            PhoneModel = "A35",
-                            Price = 288.0
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Manufacturer = "Apple",
-                            PhoneModel = "iPhone 15 Pro Max",
-                            Price = 605.0
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
