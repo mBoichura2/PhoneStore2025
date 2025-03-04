@@ -1,5 +1,5 @@
 ﻿@using static PhoneStore2025.Controllers.GalleryController
-@model Phone
+@model List<Phone>
 
 @{
     ViewData["Title"] = "Privacy Policy";
@@ -14,40 +14,20 @@
 
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col">
-        <div class="card h-100">
-            <img src="https://applehome.te.ua/wp-content/uploads/2021/09/iphone-13-pink-select-2021.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">@Model.Manufacturer @Model.PhoneModel </h5>
-                <p class="card-text">price $@Model.Price</p>
+    @foreach (var phone in Model)
+    {
+        <div class="col">
+            <div class="card h-100">
+                <img src="https://applehome.te.ua/wp-content/uploads/2021/09/iphone-13-pink-select-2021.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@phone.Manufacturer @phone.PhoneModel </h5>
+                    <p class="card-text">price $@phone.Price</p>
+                </div>
+                <a class="btn btn-primary" asp-action="Delete" asp-route-id="@phone.Id" role="button">Delete</a>
+                <a class="btn btn-primary" asp-action="Update" asp-route-id="@phone.Id" role="button">Update</a>
             </div>
         </div>
-    </div>
-    <div class="col">
-        <div class="card h-100">
-            <img src="https://applehome.te.ua/wp-content/uploads/2021/09/iphone-13-pink-select-2021.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a short card.</p>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card h-100">
-            <img src="https://applehome.te.ua/wp-content/uploads/2021/09/iphone-13-pink-select-2021.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">iPhone 15 pro max</h5>
-                <p class="card-text">The best phone in the world</p>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card h-100">
-            <img src="https://applehome.te.ua/wp-content/uploads/2021/09/iphone-13-pink-select-2021.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-        </div>
-    </div>
+    }
 </div>
+
+<a class="btn btn-primary" asp-action="Create" role="button">Add phone</a>

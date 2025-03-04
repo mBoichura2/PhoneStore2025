@@ -1,0 +1,17 @@
+﻿@model Phone
+
+<form asp-action="Update" method="post">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Manufacturer</label>
+        <input asp-for="@Model.Manufacturer" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">PhoneModel</label>
+        <input asp-for="PhoneModel" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Price</label>
+        <input asp-for="Price" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>

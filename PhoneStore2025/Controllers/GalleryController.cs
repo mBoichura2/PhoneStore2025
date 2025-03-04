@@ -1,27 +1,58 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using PhoneStore2025.Data;
 using PhoneStore2025.Models;
 
 namespace PhoneStore2025.Controllers
 {
     public class GalleryController : Controller
     {
-        public IActionResult Index()
+        ApplicationDbContext _context;
+        public GalleryController(ApplicationDbContext context)
         {
-            Phone phone = new Phone();
-            phone.Manufacturer = "iPhone";
-            phone.PhoneModel = "12 Pro Max";
-            phone.Price = 305;
-
-            return View(phone);
+            _context = context;
         }
 
-        public class Phone
+        public IActionResult Index()
         {
-            public string Manufacturer { get; set; }
-            public string PhoneModel { get; set; }
-            public double Price { get; set; }
+            var phones = _context.Phones.ToList();
+            return View(phones);
+        }
 
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Create(Phone phone)
+        {
+            _context.Phones.Add(phone);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            var phone = _context.Phones.Find(id);
+            return View(phone);
+        }
+        [HttpPost]
+        public IActionResult Update(Phone phone)
+        {
+            _context.Phones.Update(phone);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var phone = _context.Phones.Find(id);
+            _context.Phones.Remove(phone);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
